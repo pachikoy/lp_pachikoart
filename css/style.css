@@ -3,9 +3,12 @@
 ===================================================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  background: #f5f0eb;
+html {
   overflow-x: hidden;
+}
+
+body {
+  background: #f5f0eb;
 }
 
 /* =====================================================
