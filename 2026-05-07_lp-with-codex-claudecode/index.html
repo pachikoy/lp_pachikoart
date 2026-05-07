@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PACHIKO YOSHIDA | ART DIRECTOR / AI CREATOR / ARTIST</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="bg-art" aria-hidden="true"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <main class="lp">
+    <div class="section">
+      <img src="img/LP_01.png" alt="Hero — AI × ART" loading="eager">
+    </div>
+    <div class="section">
+      <img src="img/LP_02.png" alt="About My Work" loading="lazy">
+    </div>
+    <div class="section">
+      <img src="img/LP_03.png" alt="My Creative Process" loading="lazy">
+    </div>
+    <div class="section">
+      <img src="img/LP_04.png" alt="Art Works" loading="lazy">
+    </div>
+    <div class="section">
+      <img src="img/LP_05.png" alt="Profile" loading="lazy">
+    </div>
+  </main>
+
+  <script>
+    // 1枚目以外を非表示状態にセット（JSが動く場合のみ）
+    const sections = Array.from(document.querySelectorAll('.section'));
+    sections.slice(1).forEach(el => el.classList.add('is-hidden'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        // is-hidden を外すと CSS transition が走る
+        entry.target.classList.remove('is-hidden');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0,
+      // 画面下端より 22% 上に入ったタイミングで発火
+      // → デスクトップでもページ読み込み直後には発火しない
+      rootMargin: '0px 0px -22% 0px'
+    });
+
+    sections.slice(1).forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
