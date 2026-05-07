@@ -94,4 +94,7 @@ html, body {
 @media (max-width: 480px) {
   .lp { box-shadow: none; }
   .bg-art, .bg-overlay { display: none; }
+  /* モバイルではスクロールアニメーション無効 — opacity:0 の空白が目立つため */
+  .section { transition: none; }
+  .section.is-hidden { opacity: 1; transform: none; }
 }
